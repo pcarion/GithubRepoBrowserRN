@@ -1,9 +1,16 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, ScrollView } from 'react-native';
+
+import NavigationBar, { NAV_BAR_HEIGHT } from '../../components/NavigationBar';
 
 class RepoDetail extends Component {
+  onBackPress = () => {
+    const { history } = this.props;
+    history.goBack();
+  }
+
   render() {
     const { match, appState } = this.props;
     const { repoId } = match.params;
@@ -11,11 +18,17 @@ class RepoDetail extends Component {
     const repo = appState.getRepoById(repoId);
 
     console.log('repo>', repo);
+    console.log('@@@ NAV_BAR_HEIGHT:', NAV_BAR_HEIGHT);
 
     return (
       <View style={styles.container}>
-        <Text style={styles.welcome}>repoId {repoId}!</Text>
-        <Text style={styles.welcome}>repo: {JSON.stringify(repo)}!</Text>
+        <NavigationBar
+          title={repo.name}
+          onLeftIconPress={this.onBackPress}
+        />
+        <ScrollView style={styles.scrollView} contentContainerStyle={styles.contentContainer}>
+          <Text style={styles.welcome}>repo: {repo.name}!</Text>
+        </ScrollView>
       </View>
     );
   }
@@ -33,6 +46,12 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#F5FCFF',
+  },
+  contentContainer: {
+    paddingVertical: 20
+  },
+  scrollView: {
+    marginTop: NAV_BAR_HEIGHT,
   },
   welcome: {
     fontSize: 20,
