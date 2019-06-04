@@ -1,7 +1,9 @@
 # GithubRepoBrowserRN
 sample app to browse a Github repo, in react Native
 
-![Browser App on iOS](https://raw.githubusercontent.com/pcarion/GithubRepoBrowserRN/master/docs/ios-demo.gif)
+| iOS        | Android |
+| ------------- |-------- |
+| ![Browser App on iOS](https://raw.githubusercontent.com/pcarion/GithubRepoBrowserRN/master/docs/ios-demo.gif) | ![Browser App on Android](https://raw.githubusercontent.com/pcarion/GithubRepoBrowserRN/master/docs/android-demo.gif) |
 
 ## Main steps
 
