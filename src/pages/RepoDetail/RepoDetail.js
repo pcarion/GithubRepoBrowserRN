@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import { StyleSheet, Text, View, ScrollView } from 'react-native';
+import { StyleSheet, Text, View, ScrollView, Button } from 'react-native';
 
 import NavigationBar, { NAV_BAR_HEIGHT } from '../../components/NavigationBar';
 
@@ -9,6 +9,11 @@ class RepoDetail extends Component {
   onBackPress = () => {
     const { history } = this.props;
     history.goBack();
+  }
+
+  navigateToIssues = (repoName) => {
+    const { history } = this.props;
+    history.push(`/issues/${repoName}`);
   }
 
   render() {
@@ -85,6 +90,11 @@ class RepoDetail extends Component {
           <Text style={styles.description}>
             {repo.description}
           </Text>
+          <Button
+            onPress={() => this.navigateToIssues(repo.name)}
+            title="See Issues"
+            color="#841584"
+          />
         </ScrollView>
       </View>
     );
