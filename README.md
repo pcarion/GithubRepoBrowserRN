@@ -16,6 +16,7 @@ react-native init GithubRepoBrowserRN
 ```
 
 ### Add eslint
+You can't _really_ work in Javascript without `eslint` so...:
 
 ```
 yarn add --dev eslint babel-eslint eslint-config-airbnb eslint-plugin-jsx-a11y eslint-plugin-react eslint-plugin-import
@@ -44,4 +45,8 @@ and then define routes is `App.js`
 | `/repoDetail/:repoId` | RepoDetail | `src/pages/RepoDetail/RepoDetail.js` | Information about a given repository |
 | `/issues/:repoName` | IssuesList | `src/pages/IssuesList/IssuesList.js` | List of issues associated to a given repository |
 | `/issue/:repoName/:issueId` | IssueDetail | `src/pages/IssueDetail/IssueDetail.js` | Detail information about an issue |
+
+* `src/state/index.js`: model/state for the app. This module is in charge of doing the Github API calls. In a _real_ RN app, we would use a more sophisticated state management like [redux](https://redux.js.org/) or [Mobx](https://mobx.js.org/).
+* `src/components/NavigationBar/NavigationBar.js`: the only reusable components for that app: that's the header of the pages to allow the back navigation.
+
 
