@@ -3,13 +3,15 @@ sample app to browse a Github repo, in react Native
 
 ## Main steps
 
+### Create app
+
 Create app with:
 
 ```
 react-native init GithubRepoBrowserRN
 ```
 
-Add eslint
+### Add eslint
 
 ref:
 * https://github.com/jerolimov/react-native-with-eslint
@@ -21,4 +23,13 @@ yarn add --dev eslint babel-eslint eslint-config-airbnb eslint-plugin-jsx-a11y e
 
 
 add `.eslintrc.json`
+
+
+### Add router
+
+```
+yarn add react-router-native
+```
+
+define routes is `App.js`
 

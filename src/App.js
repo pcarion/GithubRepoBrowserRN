@@ -3,12 +3,12 @@
  * https://github.com/facebook/react-native
  */
 
-import React, { Component } from 'react';
-import { Platform, StyleSheet, Text, View } from 'react-native';
+import React from 'react';
+import { SafeAreaView, StyleSheet, Text, View } from 'react-native';
 
 import { NativeRouter, Route, Link } from 'react-router-native';
 
-const Home = () => <Text style={styles.header}>Home</Text>;
+import Home from './pages/Home';
 
 const About = () => <Text style={styles.header}>About</Text>;
 
@@ -19,8 +19,7 @@ const Topic = ({ match }) => (
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: 25,
-    padding: 10
+    flex: 1,
   },
   header: {
     fontSize: 20
@@ -79,26 +78,13 @@ const Topics = ({ match }) => (
   </View>
 );
 
-
 const App = () => (
   <NativeRouter>
-    <View style={styles.container}>
-      <View style={styles.nav}>
-        <Link to="/" underlayColor="#f0f4f7" style={styles.navItem}>
-          <Text>Home</Text>
-        </Link>
-        <Link to="/about" underlayColor="#f0f4f7" style={styles.navItem}>
-          <Text>About</Text>
-        </Link>
-        <Link to="/topics" underlayColor="#f0f4f7" style={styles.navItem}>
-          <Text>Topics</Text>
-        </Link>
-      </View>
-
+    <SafeAreaView style={styles.container}>
       <Route exact path="/" component={Home} />
       <Route path="/about" component={About} />
       <Route path="/topics" component={Topics} />
-    </View>
+    </SafeAreaView>
   </NativeRouter>
 );
 
