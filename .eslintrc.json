@@ -12,6 +12,8 @@
     "object-curly-newline": "off",
     "no-console": "off",
     "arrow-body-style" : "off",
+    "react/forbid-prop-types": "off",
+    "react/prefer-stateless-function": "off",
     "semi": ["error", "always"]
   },
   "globals": {

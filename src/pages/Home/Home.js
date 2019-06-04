@@ -7,30 +7,36 @@ import {
   Text,
   TouchableOpacity
 } from 'react-native';
+import PropTypes from 'prop-types';
 
-import { githubRepoUser } from '../../../app.json';
+import {
+  withRouter
+} from 'react-router-native';
 
-
-export default class Home extends React.Component {
+class Home extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      loading: true,
+      loading: false,
       repositories: [],
     };
   }
 
-  componentDidMount() {
-    fetch(`https://api.github.com/users/${githubRepoUser}/repos`)
-      .then(response => response.json())
-      .then((responseJson) => {
-        console.log(responseJson);
-        this.setState({
-          loading: false,
-          repositories: responseJson
-        });
-      })
-      .catch(error => console.log(error));
+  async componentDidMount() {
+    const { appState } = this.props;
+
+    this.setState({
+      loading: true,
+    });
+    try {
+      const repos = await appState.getListOfRepos();
+      this.setState({
+        loading: false,
+        repositories: [...repos],
+      });
+    } catch (err) {
+      console.log(err);
+    }
   }
 
   FlatListItemSeparator = () => {
@@ -44,10 +50,14 @@ export default class Home extends React.Component {
     );
   }
 
+  navigateToRepo = (item) => {
+    const { history } = this.props;
+    history.push(`/repoDetail/${item.id}`);
+  }
+
   renderItem = (data) => {
-    console.log('@@@ renderItem:item>name>', data.item);
     return (
-      <TouchableOpacity style={styles.list}>
+      <TouchableOpacity style={styles.list} onPress={() => this.navigateToRepo(data.item)}>
         <Text style={styles.repoName}>{data.item.name}</Text>
         <Text style={styles.repoDescription}>{data.item.description}</Text>
       </TouchableOpacity>
@@ -80,6 +90,12 @@ export default class Home extends React.Component {
     );
   }
 }
+
+Home.propTypes = {
+  appState: PropTypes.object.isRequired,
+};
+
+export default withRouter(Home);
 
 const styles = StyleSheet.create({
   container: {

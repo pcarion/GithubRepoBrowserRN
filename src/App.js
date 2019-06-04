@@ -6,9 +6,18 @@
 import React from 'react';
 import { SafeAreaView, StyleSheet, Text, View } from 'react-native';
 
-import { NativeRouter, Route, Link } from 'react-router-native';
+import { NativeRouter, Switch, Route, Link } from 'react-router-native';
+import { githubRepoUser } from '../app.json';
+
+import mkState from './state';
 
 import Home from './pages/Home';
+import RepoDetail from './pages/RepoDetail';
+
+// the shared state between components
+// we could have used a react context for that, but may be over kill
+// as we have very few components
+const appState = mkState(githubRepoUser);
 
 const About = () => <Text style={styles.header}>About</Text>;
 
@@ -78,14 +87,19 @@ const Topics = ({ match }) => (
   </View>
 );
 
+
+
 const App = () => (
-  <NativeRouter>
-    <SafeAreaView style={styles.container}>
-      <Route exact path="/" component={Home} />
-      <Route path="/about" component={About} />
-      <Route path="/topics" component={Topics} />
-    </SafeAreaView>
-  </NativeRouter>
+  <SafeAreaView style={styles.container}>
+    <NativeRouter>
+      <Switch>
+        <Route exact path="/" render={props => <Home {...props} appState={appState} />} />
+        <Route path="/repoDetail/:repoId" render={props => <RepoDetail {...props} appState={appState} />} />
+        <Route path="/about" render={props => <About {...props} appState={appState} />} />
+        <Route render={props => <Home {...props} appState={appState} />} />
+      </Switch>
+    </NativeRouter>
+  </SafeAreaView>
 );
 
 export default App;
