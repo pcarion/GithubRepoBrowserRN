@@ -1,6 +1,8 @@
 # GithubRepoBrowserRN
 sample app to browse a Github repo, in react Native
 
+![Browser App on iOS](https://raw.githubusercontent.com/pcarion/GithubRepoBrowserRN/master/docs/ios-demo.gif)
+
 ## Main steps
 
 ### Create app
