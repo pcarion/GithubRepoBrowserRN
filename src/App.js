@@ -21,6 +21,7 @@ import IssueDetail from './pages/IssueDetail';
 // as we have very few components
 const appState = mkState(githubRepoUser);
 
+// Fake About page
 const About = () => <Text style={styles.header}>About</Text>;
 
 const styles = StyleSheet.create({

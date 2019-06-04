@@ -40,6 +40,8 @@ and then define routes is `App.js`
 
 | Route Path | Page Name | file | quick description |
 | ---------- | --------- | ---- | ----------------- |
-| `/` | Home | `src/pages/Home/Home.js` | xx |
-| `/repoDetail/:repoId` | RepoDetail | `src/pages/RepoDetail/RepoDetail.js` | xx |
+| `/` | Home | `src/pages/Home/Home.js` | The list of all the repos associated to a user (property `githubRepoUser` in `app.json`) |
+| `/repoDetail/:repoId` | RepoDetail | `src/pages/RepoDetail/RepoDetail.js` | Information about a given repository |
+| `/issues/:repoName` | IssuesList | `src/pages/IssuesList/IssuesList.js` | List of issues associated to a given repository |
+| `/issue/:repoName/:issueId` | IssueDetail | `src/pages/IssueDetail/IssueDetail.js` | Detail information about an issue |
 
