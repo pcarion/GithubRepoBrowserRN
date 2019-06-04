@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 
 import { StyleSheet, Text, View, ScrollView } from 'react-native';
 
+import Markdown from 'react-native-markdown-renderer';
+
 import NavigationBar, { NAV_BAR_HEIGHT } from '../../components/NavigationBar';
 
 class IssueDetail extends Component {
@@ -31,9 +33,9 @@ class IssueDetail extends Component {
               {issue.title}
             </Text>
           </View>
-          <Text style={styles.description}>
-            {issue.body}
-          </Text>
+          <View style={styles.description}>
+            <Markdown>{issue.body}</Markdown>
+          </View>
         </ScrollView>
       </View>
     );
