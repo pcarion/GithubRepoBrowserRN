@@ -18,7 +18,6 @@ class RepoDetail extends Component {
     const repo = appState.getRepoById(repoId);
 
     console.log('repo>', repo);
-    console.log('@@@ NAV_BAR_HEIGHT:', NAV_BAR_HEIGHT);
 
     return (
       <View style={styles.container}>
@@ -27,7 +26,65 @@ class RepoDetail extends Component {
           onLeftIconPress={this.onBackPress}
         />
         <ScrollView style={styles.scrollView} contentContainerStyle={styles.contentContainer}>
-          <Text style={styles.welcome}>repo: {repo.name}!</Text>
+          <View style={styles.infoBlock}>
+            <Text style={styles.infoName}>
+              Repository name:
+            </Text>
+            <Text style={styles.infoValue}>
+              {repo.name}
+            </Text>
+          </View>
+          <View style={styles.infoBlock}>
+            <Text style={styles.infoName}>
+              Owner:
+            </Text>
+            <Text style={styles.infoValue}>
+              {repo.owner.login}
+            </Text>
+          </View>
+          <View style={styles.infoBlock}>
+            <Text style={styles.infoName}>
+              Language:
+            </Text>
+            <Text style={styles.infoValue}>
+              {repo.language}
+            </Text>
+          </View>
+          <View style={styles.infoBlock}>
+            <Text style={styles.infoName}>
+              Stars:
+            </Text>
+            <Text style={styles.infoValue}>
+              {repo.stargazers_count}
+            </Text>
+          </View>
+          <View style={styles.infoBlock}>
+            <Text style={styles.infoName}>
+              Watchers:
+            </Text>
+            <Text style={styles.infoValue}>
+              {repo.watchers_count}
+            </Text>
+          </View>
+          <View style={styles.infoBlock}>
+            <Text style={styles.infoName}>
+              Forks:
+            </Text>
+            <Text style={styles.infoValue}>
+              {repo.forks_count}
+            </Text>
+          </View>
+          <View style={styles.infoBlock}>
+            <Text style={styles.infoName}>
+              Opened issues:
+            </Text>
+            <Text style={styles.infoValue}>
+              {repo.open_issues_count}
+            </Text>
+          </View>
+          <Text style={styles.description}>
+            {repo.description}
+          </Text>
         </ScrollView>
       </View>
     );
@@ -47,21 +104,36 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#F5FCFF',
   },
-  contentContainer: {
-    paddingVertical: 20
-  },
   scrollView: {
     marginTop: NAV_BAR_HEIGHT,
+    flex: 1,
+    width: '100%',
   },
-  welcome: {
+  contentContainer: {
+    marginTop: NAV_BAR_HEIGHT,
+    flex: 1,
+    flexDirection: 'column',
+    paddingVertical: 16,
+    alignItems: 'stretch',
+    justifyContent: 'flex-start',
+  },
+  infoBlock: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginLeft: 32,
+    marginRight: 32,
+    marginBottom: 8,
+  },
+  infoName: {
     fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
+    textAlign: 'left',
+    fontWeight: 'bold',
   },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
+  infoValue: {
+    fontSize: 20,
+    textAlign: 'left',
+  },
+  description: {
+    margin: 16,
   },
 });
-
