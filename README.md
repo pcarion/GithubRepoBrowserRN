@@ -5,7 +5,7 @@ sample app to browse a Github repo, in react Native
 | ------------- |-------- |
 | ![Browser App on iOS](https://raw.githubusercontent.com/pcarion/GithubRepoBrowserRN/master/docs/ios-demo.gif) | ![Browser App on Android](https://raw.githubusercontent.com/pcarion/GithubRepoBrowserRN/master/docs/android-demo.gif) |
 
-## Main steps
+## Inital steps to build a RN application
 
 ### Create app
 
@@ -17,16 +17,11 @@ react-native init GithubRepoBrowserRN
 
 ### Add eslint
 
-ref:
-* https://github.com/jerolimov/react-native-with-eslint
-* https://codeburst.io/setting-up-eslint-and-editorconfig-in-react-native-projects-31b4d9ddd0f6
-
 ```
 yarn add --dev eslint babel-eslint eslint-config-airbnb eslint-plugin-jsx-a11y eslint-plugin-react eslint-plugin-import
 ```
 
-
-add `.eslintrc.json`
+add `.eslintrc.json` with rules suitable for the project.
 
 
 ### Add router
@@ -35,5 +30,16 @@ add `.eslintrc.json`
 yarn add react-router-native
 ```
 
-define routes is `App.js`
+and then define routes is `App.js`
+
+### Main classes / files
+
+* `src/index.js` : entry point of the app - shared between iOS and Android as the design is the same. We instantiate `App` which is in:
+
+* `src/App.js`: actual entry point of the app. No visual component there, but the definition of the routes of the application with `react-router-native`. We have 4 routes (pages) in the app:
+
+| Route Path | Page Name | file | quick description |
+| ---------- | --------- | ---- | ----------------- |
+| `/` | Home | `src/pages/Home/Home.js` | xx |
+| `/repoDetail/:repoId` | RepoDetail | `src/pages/RepoDetail/RepoDetail.js` | xx |
 
