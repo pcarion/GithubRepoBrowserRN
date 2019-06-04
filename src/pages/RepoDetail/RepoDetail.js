@@ -65,14 +65,6 @@ class RepoDetail extends Component {
           </View>
           <View style={styles.infoBlock}>
             <Text style={styles.infoName}>
-              Watchers:
-            </Text>
-            <Text style={styles.infoValue}>
-              {repo.watchers_count}
-            </Text>
-          </View>
-          <View style={styles.infoBlock}>
-            <Text style={styles.infoName}>
               Forks:
             </Text>
             <Text style={styles.infoValue}>
